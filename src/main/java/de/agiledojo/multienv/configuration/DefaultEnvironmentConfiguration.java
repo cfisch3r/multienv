@@ -5,5 +5,5 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @PropertySource("classpath:/de/agiledojo/multienv/conf/default.properties")
-public class MultiEnvContextConfiguration {
+public class DefaultEnvironmentConfiguration {
 }

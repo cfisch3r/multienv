@@ -11,10 +11,10 @@ import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import de.agiledojo.multienv.configuration.MultiEnvContextConfiguration;
+import de.agiledojo.multienv.configuration.DefaultEnvironmentConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { MultiEnvContextConfiguration.class })
+@ContextConfiguration(classes = { DefaultEnvironmentConfiguration.class })
 @DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
 public class MultiEnvTest {
 
@@ -22,9 +22,9 @@ public class MultiEnvTest {
 	Environment env;
 
 	@Test
-	public void getInjectedValue() {
-		final String sampleParameterName = "sample";
-		final String defaultParameter = "default";
-		assertThat(env.getProperty(sampleParameterName)).isEqualTo(defaultParameter);
+	public void gettingPropertyFromEnvironmentReturnsDefaultValue() {
+		final String samplePropertyName = "sample";
+		final String defaultSamplePropertyValue = "default";
+		assertThat(env.getProperty(samplePropertyName)).isEqualTo(defaultSamplePropertyValue);
 	}
 }
