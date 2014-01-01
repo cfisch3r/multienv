@@ -5,8 +5,8 @@
 	<artifactId>multienv</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>Spring Project</name>
-	<description>Spring Project</description>
+	<name>Multi Environment Spring Project</name>
+	<description>Demo of Spring multi environment support</description>
 	<organization>
 		<name>Agile Dojo</name>
 		<url>http://agiledojo.de</url>
@@ -57,8 +57,7 @@
 
 	<properties>
 		<java.version>1.7</java.version>
-		<spring.version>3.2.3.RELEASE</spring.version>
-		<camel.version>2.11.0</camel.version>
+		<spring.version>4.0.0.RELEASE</spring.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<javadoc.plugin.version>2.9.1</javadoc.plugin.version>
