@@ -5,7 +5,6 @@ import static org.fest.assertions.Assertions.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.ActiveProfiles;
@@ -20,35 +19,22 @@ import de.agiledojo.multienv.configuration.MultiEnvConfiguration;
 @ActiveProfiles("production")
 public class MultiEnvTest {
 
-	@Autowired
-	Environment env;
+	private static final String PRODUCTION_PROPERTY_VALUE = "production";
+
+	private static final String GENERAL_PROPERTY_VALUE = "default";
 
 	@Autowired
 	SampleBean bean;
 
 	@Test
-	public void gettingPropertyFromEnvironmentReturnsDefaultValue() {
-		final String samplePropertyName = "sample";
-		final String defaultSamplePropertyValue = "production";
-		assertThat(env.getProperty(samplePropertyName)).isEqualTo(defaultSamplePropertyValue);
-	}
-
-	@Test
-	public void gettingDefaultPropertyWhenNotSpecifiedInProfile() {
-		final String samplePropertyName = "sample2";
-		final String defaultSamplePropertyValue = "default";
-		assertThat(env.getProperty(samplePropertyName)).isEqualTo(defaultSamplePropertyValue);
-	}
-
-	@Test
-	public void sampleBeanPropertyHasDefaultValueWhenPropertyIsNotDeclaredInProductionProfile() {
+	public void sampleBeanGeneralValueHasValueFromPropertyFileDefinedInGeneralApplicationContext() {
 		final String actualValue = bean.getGeneralValue();
-		assertThat(actualValue).isEqualTo("default");
+		assertThat(actualValue).isEqualTo(GENERAL_PROPERTY_VALUE);
 	}
 
 	@Test
-	public void sampleBeanPropertyHasProductionValueWhenPropertyIsDeclaredInProductionProfile() {
+	public void sampleBeanEnvironmentSpecificValueHasValueFromPropertySourceOfProductionConfiguration() {
 		final String actualValue = bean.getEnvironmentSpecificValue();
-		assertThat(actualValue).isEqualTo("production");
+		assertThat(actualValue).isEqualTo(PRODUCTION_PROPERTY_VALUE);
 	}
 }
