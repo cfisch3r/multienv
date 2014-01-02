@@ -19,10 +19,10 @@ import de.agiledojo.multienv.SampleBean;
 @Import(ProductionEnvironmentConfiguration.class)
 public class MultiEnvConfiguration {
 
-	@Value("${sample2}")
+	@Value("${general}")
 	private String generalValue;
 
-	@Value("${sample}")
+	@Value("${specific}")
 	private String environmentSpecificValue;
 
 	@Bean
