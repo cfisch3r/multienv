@@ -45,4 +45,10 @@ public class MultiEnvTest {
 		final String actualValue = bean.getDefaultValue();
 		assertThat(actualValue).isEqualTo("default");
 	}
+
+	@Test
+	public void sampleBeanPropertyHasProductionValueWhenPropertyIsDeclaredInProductionProfile() {
+		final String actualValue = bean.getProductionValue();
+		assertThat(actualValue).isEqualTo("production");
+	}
 }
