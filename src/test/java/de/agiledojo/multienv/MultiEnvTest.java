@@ -23,6 +23,9 @@ public class MultiEnvTest {
 	@Autowired
 	Environment env;
 
+	@Autowired
+	SampleBean bean;
+
 	@Test
 	public void gettingPropertyFromEnvironmentReturnsDefaultValue() {
 		final String samplePropertyName = "sample";
@@ -35,5 +38,11 @@ public class MultiEnvTest {
 		final String samplePropertyName = "sample2";
 		final String defaultSamplePropertyValue = "default";
 		assertThat(env.getProperty(samplePropertyName)).isEqualTo(defaultSamplePropertyValue);
+	}
+
+	@Test
+	public void sampleBeanPropertyHasDefaultValueWhenPropertyIsNotDeclaredInProductionProfile() {
+		final String actualValue = bean.getDefaultValue();
+		assertThat(actualValue).isEqualTo("default");
 	}
 }
