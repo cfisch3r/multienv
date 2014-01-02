@@ -12,10 +12,10 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import de.agiledojo.multienv.configuration.DefaultEnvironmentConfiguration;
+import de.agiledojo.multienv.configuration.MultiEnvConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { DefaultEnvironmentConfiguration.class })
+@ContextConfiguration(classes = { MultiEnvConfiguration.class })
 @DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
 @ActiveProfiles("production")
 public class MultiEnvTest {
@@ -42,13 +42,13 @@ public class MultiEnvTest {
 
 	@Test
 	public void sampleBeanPropertyHasDefaultValueWhenPropertyIsNotDeclaredInProductionProfile() {
-		final String actualValue = bean.getDefaultValue();
+		final String actualValue = bean.getGeneralValue();
 		assertThat(actualValue).isEqualTo("default");
 	}
 
 	@Test
 	public void sampleBeanPropertyHasProductionValueWhenPropertyIsDeclaredInProductionProfile() {
-		final String actualValue = bean.getProductionValue();
+		final String actualValue = bean.getEnvironmentSpecificValue();
 		assertThat(actualValue).isEqualTo("production");
 	}
 }

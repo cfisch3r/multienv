@@ -1,22 +1,26 @@
 package de.agiledojo.multienv;
 
+/**
+ * Sample Bean to demonstrate property values with Spring
+ * 
+ */
 public class SampleBean {
 
-	private String defaultValue;
+	private String generalValue;
 
-	private String productionValue;
+	private String environmentSpecificValue;
 
-	public SampleBean(String defaultValue, String productionValue) {
-		this.defaultValue = defaultValue;
-		this.productionValue = productionValue;
+	public SampleBean(String generalValue, String environmentSpecificValue) {
+		this.generalValue = generalValue;
+		this.environmentSpecificValue = environmentSpecificValue;
 	}
 
-	public String getDefaultValue() {
-		return defaultValue;
+	public String getGeneralValue() {
+		return generalValue;
 	}
 
-	public String getProductionValue() {
-		return productionValue;
+	public String getEnvironmentSpecificValue() {
+		return environmentSpecificValue;
 	}
 
 }

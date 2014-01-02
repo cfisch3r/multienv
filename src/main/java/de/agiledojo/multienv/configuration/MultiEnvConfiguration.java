@@ -10,21 +10,25 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 import de.agiledojo.multienv.SampleBean;
 
+/**
+ * Base Application configuration
+ * 
+ */
 @Configuration
 @PropertySource("classpath:/de/agiledojo/multienv/conf/default.properties")
 @Import(ProductionEnvironmentConfiguration.class)
-public class DefaultEnvironmentConfiguration {
+public class MultiEnvConfiguration {
 
 	@Value("${sample2}")
-	private String defaultProperty;
+	private String generalValue;
 
 	@Value("${sample}")
-	private String productionProperty;
+	private String environmentSpecificValue;
 
 	@Bean
 	@Autowired
 	public SampleBean createSampleBean() {
-		return new SampleBean(defaultProperty, productionProperty);
+		return new SampleBean(generalValue, environmentSpecificValue);
 	}
 
 	@Bean
