@@ -20,13 +20,22 @@ import de.agiledojo.multienv.configuration.MultiEnvConfiguration;
 @DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
 public class DefaultConfigurationTest {
 
+	private static final String TIMEZONE_ID_IN_PROPERTY_FILE = "CET";
+
 	@Autowired
 	Calendar cal;
 
 	@Test
 	public void timeZoneHasValueFromPropertyFile() {
-		TimeZone timeZoneFromPropertyFile = TimeZone.getTimeZone("CET");
-		TimeZone actualTimeZone = cal.getTimeZone();
+		final TimeZone timeZoneFromPropertyFile = TimeZone.getTimeZone(TIMEZONE_ID_IN_PROPERTY_FILE);
+		final TimeZone actualTimeZone = cal.getTimeZone();
 		assertThat(actualTimeZone).isEqualTo(timeZoneFromPropertyFile);
+	}
+
+	@Test
+	public void firstDayOFWeekHasValueFromPropertyFile() {
+		final int firstDayOfWeekFromPropertyFile = 0;
+		final int actualFirstDayOfWeek = cal.getFirstDayOfWeek();
+		assertThat(actualFirstDayOfWeek).isEqualTo(firstDayOfWeekFromPropertyFile);
 	}
 }

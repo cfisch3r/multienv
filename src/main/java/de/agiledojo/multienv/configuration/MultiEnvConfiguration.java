@@ -31,6 +31,9 @@ public class MultiEnvConfiguration {
 	@Value("${timezone.id}")
 	private String timeZoneID;
 
+	@Value("${firstDayOfWeek}")
+	private int firstDayOfWeek;
+
 	@Bean
 	@Autowired
 	public SampleBean createSampleBean() {
@@ -44,6 +47,8 @@ public class MultiEnvConfiguration {
 
 	@Bean
 	public Calendar configuredCalendar() {
-		return Calendar.getInstance(TimeZone.getTimeZone(timeZoneID));
+		Calendar cal = Calendar.getInstance(TimeZone.getTimeZone(timeZoneID));
+		cal.setFirstDayOfWeek(firstDayOfWeek);
+		return cal;
 	}
 }
