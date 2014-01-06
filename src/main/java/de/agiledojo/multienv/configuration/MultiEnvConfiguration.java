@@ -1,5 +1,8 @@
 package de.agiledojo.multienv.configuration;
 
+import java.util.Calendar;
+import java.util.TimeZone;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -25,6 +28,9 @@ public class MultiEnvConfiguration {
 	@Value("${specific}")
 	private String environmentSpecificValue;
 
+	@Value("${timezone.id}")
+	private String timeZoneID;
+
 	@Bean
 	@Autowired
 	public SampleBean createSampleBean() {
@@ -34,5 +40,10 @@ public class MultiEnvConfiguration {
 	@Bean
 	public static PropertySourcesPlaceholderConfigurer createPropertySourcesPlaceholderConfigurer() {
 		return new PropertySourcesPlaceholderConfigurer();
+	}
+
+	@Bean
+	public Calendar configuredCalendar() {
+		return Calendar.getInstance(TimeZone.getTimeZone(timeZoneID));
 	}
 }
