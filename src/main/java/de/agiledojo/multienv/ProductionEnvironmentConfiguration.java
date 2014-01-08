@@ -1,4 +1,4 @@
-package de.agiledojo.multienv.configuration;
+package de.agiledojo.multienv;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
