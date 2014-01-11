@@ -22,7 +22,7 @@ public class DefaultConfigurationTest {
 	private static final String DEFAULT_TIMEZONE_ID = "CET";
 
 	@Autowired
-	Calendar cal;
+	private Calendar cal;
 
 	@Test
 	public void timeZoneHasDefaultValue() {

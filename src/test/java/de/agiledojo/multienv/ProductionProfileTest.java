@@ -25,7 +25,7 @@ public class ProductionProfileTest {
 	private static final String PRODUCTION_TIMEZONE_ID = "MET";
 
 	@Autowired
-	Calendar cal;
+	private Calendar cal;
 
 	@Test
 	public void timeZoneHasProductionProfileValue() {
