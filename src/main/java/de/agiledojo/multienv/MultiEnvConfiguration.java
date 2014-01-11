@@ -33,7 +33,7 @@ public class MultiEnvConfiguration {
 	}
 
 	@Bean
-	public static PropertySourcesPlaceholderConfigurer createPropertySourcesPlaceholderConfigurer() {
+	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
 		return new PropertySourcesPlaceholderConfigurer();
 	}
 }
