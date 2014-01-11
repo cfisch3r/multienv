@@ -1,4 +1,4 @@
 multienv
 ========
 
-Demo for configuration of multiple target environments using Spring Framework. 
+Demo Projekt zum Artikel [Umgebungsabhängige Konfiguration mit Profil](http://www.agile-engineering.de/umgebungsabhaengige-konfiguration-mit-profil).
